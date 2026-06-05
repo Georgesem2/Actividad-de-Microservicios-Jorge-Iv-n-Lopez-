@@ -1,0 +1,33 @@
+
+services:
+
+  usuarios-service:
+    build: ./usuarios-service
+    ports:
+      - "3001:3001"
+
+  cursos-service:
+    build: ./cursos-service
+    ports:
+      - "3002:3002"
+
+  matriculas-service:
+    build: ./matriculas-service
+    ports:
+      - "3003:3003"
+
+  profesores-service:
+    build: ./profesores-service
+    ports:
+      - "3004:3004"
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      - usuarios-service
+      - cursos-service
+      - matriculas-service
+      - profesores-service
